@@ -1,0 +1,20 @@
+{
+  "name": "angular-release-tabletop",
+  "homepage": "https://github.com/daniymilner/angular-release-tabletop",
+  "authors": [
+    "Aleksey Olenyuk <alo@qapint.com>"
+  ],
+  "main": "app.js",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8"
+  }
+}

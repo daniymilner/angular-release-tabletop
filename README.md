@@ -1,1 +1,1 @@
-# angular-release-tabletop
+# Quick AngularJS, Bootstrap and C3 template
