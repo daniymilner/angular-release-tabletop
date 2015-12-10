@@ -1,1 +1,1 @@
-# Quick AngularJS, Bootstrap and C3 template
+# Quick Release with Plugins
