@@ -1,20 +1,17 @@
-body{
-	background: #f6f6f6;
-}
-table{
-	border-collapse: collapse;
-}
-table tr td{
-	border: 1px black solid;
-}
+table tr th,
 table tr td:not(:first-child){
 	text-align: center;
 }
 table tr td:first-child input[type=checkbox]{
 	display: none;
 }
-textarea{
-	margin: 10px;
-	width: 650px;
-	height: 100px;
+.alert{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	opacity: 0;
+}
+.alert.active{
+	opacity: 1;
+	transition: 0.5s opacity linear;
 }

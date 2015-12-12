@@ -10,13 +10,36 @@ angular
 			simpleSheet: true
 		});
 	}])
+	.factory('copyFactory', [
+		function(){
+			this.copy = function(){
+				document.querySelector('.form-control.copy').select();
+
+				try{
+					return document.execCommand('copy') ? 'success' : 'fail';
+				}catch(e){
+					return 'fail';
+				}
+			};
+			return this;
+		}
+	])
 	.controller('mainCtrl', [
 		'$scope',
 		'Tabletop',
-		function($scope, Tabletop){
+		'copyFactory',
+		'$timeout',
+		function($scope, Tabletop, Copy, $timeout){
 			var that = this;
 
 			this.checkedArray = [];
+
+			this.copy = function(){
+				this.copyStatus = Copy.copy();
+				$timeout(function(){
+					that.copyStatus = false;
+				}, 3000);
+			};
 
 			Tabletop.then(function(ttdata){
 				that.table = ttdata[0];
