@@ -1,12 +1,4 @@
-body{
-	background: #f6f6f6;
-}
-table{
-	border-collapse: collapse;
-}
-table tr td{
-	border: 1px black solid;
-}
+table tr th,
 table tr td:not(:first-child){
 	text-align: center;
 }
