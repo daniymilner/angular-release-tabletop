@@ -9,7 +9,12 @@
 	<div ng-controller="mainCtrl as main">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<textarea readonly ng-model="main.result"></textarea>
+				<div class="input-group">
+					<input type="text" class="form-control copy" ng-model="main.result" placeholder="Plugin install...">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" ng-click="main.copy()">Copy</button>
+					</span>
+				</div>
 			</div>
 			<table class="table table-bordered table-hover table-condensed table-striped">
 				<thead>
@@ -30,6 +35,8 @@
 
 			</table>
 		</div>
+		<div class="alert alert-success text-center" ng-class="{'active': main.copyStatus === 'success'}" role="alert">Copying text command was successful</div>
+		<div class="alert alert-danger text-center" ng-class="{'active': main.copyStatus === 'fail'}" role="alert">Copying text command was unsuccessful</div>
 	</div>
 
 	<script src="bower_components/angular/angular.min.js"></script>

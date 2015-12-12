@@ -5,8 +5,13 @@ table tr td:not(:first-child){
 table tr td:first-child input[type=checkbox]{
 	display: none;
 }
-textarea{
-	margin: 10px;
-	width: 650px;
-	height: 100px;
+.alert{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	opacity: 0;
+}
+.alert.active{
+	opacity: 1;
+	transition: 0.5s opacity linear;
 }
