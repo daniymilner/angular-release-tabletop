@@ -30,13 +30,15 @@ angular
 		'copyFactory',
 		'$timeout',
 		function($scope, Tabletop, Copy, $timeout){
-			var that = this;
+			var that = this,
+				timeoutPromise;
 
 			this.checkedArray = [];
 
 			this.copy = function(){
 				this.copyStatus = Copy.copy();
-				$timeout(function(){
+				$timeout.cancel(timeoutPromise);
+				timeoutPromise = $timeout(function(){
 					that.copyStatus = false;
 				}, 3000);
 			};
