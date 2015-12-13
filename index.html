@@ -10,7 +10,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="input-group">
-					<input type="text" class="form-control copy" ng-model="main.result" placeholder="Plugin install...">
+					<input type="text" class="form-control copy" ng-model="main.line" placeholder="Plugin install...">
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="button" ng-click="main.copy()">Copy</button>
 					</span>
@@ -19,20 +19,24 @@
 			<table class="table table-bordered table-hover table-condensed table-striped">
 				<thead>
 				<tr>
-					<th ng-repeat="(key,version) in main.table[0]">
-						<span ng-bind="::key" ng-if="$index"></span>
+					<th>
+						<span>Plugins</span>
+					</th>
+					<th ng-repeat="item in main.headerList">
+						<input type="checkbox" ng-model="item.checked" ng-change="main.changeAll(item)">
+						<span ng-bind="::item.name"></span>
 					</th>
 				</tr>
 				</thead>
 				<tbody>
-				<tr ng-repeat="plugin in main.table">
-					<td ng-repeat="(key,version) in plugin">
-						<input type="checkbox" ng-if="version !== '-'" ng-click="main.onChange(plugin.Plugins, version)">
-						<span ng-bind="::version"></span>
+				<tr ng-repeat="plugin in main.bodyList">
+					<td ng-bind="::plugin.name"></td>
+					<td ng-repeat="version in plugin.versions">
+						<input type="checkbox" ng-if="version.value && version.value !== '-'" ng-model="version.checked" ng-change="main.changeStatus(plugin.name, version)">
+						<span ng-bind="::version.value"></span>
 					</td>
 				</tr>
 				</tbody>
-
 			</table>
 		</div>
 		<div class="alert alert-success text-center" ng-class="{'active': main.copyStatus === 'success'}" role="alert">Copying text command was successful</div>
