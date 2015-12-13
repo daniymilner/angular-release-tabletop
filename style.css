@@ -10,8 +10,10 @@ table tr td:first-child input[type=checkbox]{
 	bottom: 0;
 	width: 100%;
 	opacity: 0;
+	pointer-events: none;
 }
 .alert.active{
 	opacity: 1;
-	transition: 0.5s opacity linear;
+	transition: 0.3s opacity linear;
+	pointer-events: auto;
 }

@@ -33,8 +33,6 @@ angular
 			var that = this,
 				timeoutPromise;
 
-			this.checkedArray = [];
-
 			this.copy = function(){
 				this.copyStatus = Copy.copy();
 				$timeout.cancel(timeoutPromise);
@@ -44,42 +42,146 @@ angular
 			};
 
 			Tabletop.then(function(ttdata){
-				that.table = ttdata[0];
+				var initialList = ttdata[0];
+				that.resultArray = [];
+				initHeader(initialList);
+				initBody(initialList);
 			});
 
-			this.onChange = function(plugin, version){
-				if(!isPluginInArray(plugin, version)){
-					this.checkedArray.push({
-						plugin: plugin,
-						version: version
+			function initHeader(initial){
+				that.headerList = [];
+				Object
+					.keys(initial[0])
+					.filter(function(key){
+						return key !== 'Plugins';
+					})
+					.forEach(function(item){
+						that.headerList.push({
+							name: item,
+							checked: false
+						});
 					});
-				}else{
-					removeItemFromArray(plugin, version);
-				}
+			}
 
-				createResultLine();
-			};
-
-			function isPluginInArray(plugin, version){
-				return that.checkedArray.some(function(item){
-					return plugin === item.plugin && version === item.version;
+			function initBody(initial){
+				that.bodyList = [];
+				initial.forEach(function(item){
+					var res = {
+						name: '',
+						versions: []
+					};
+					Object.keys(item).forEach(function(key){
+						var version = {};
+						if(key === 'Plugins'){
+							res.name = item[key];
+						}else{
+							version.key = key;
+							version.value = item[key];
+							version.checked = false;
+							res.versions.push(version);
+						}
+					});
+					that.bodyList.push(res);
 				});
 			}
 
-			function removeItemFromArray(plugin, version){
-				for(var i = 0; i < that.checkedArray.length; i++){
-					if(that.checkedArray[i].plugin === plugin && that.checkedArray[i].version === version){
-						that.checkedArray.splice(i, 1);
+			this.changeStatus = function(pluginName, version){
+				var status = version.checked;
+				uncheckAllHeaderItems();
+				if(that.resultArray.length){
+					for(var j = 0; j < that.resultArray.length; j++){
+						if(that.resultArray[j].name === pluginName){
+							uncheckByName(pluginName);
+							version.checked = status;
+							break;
+						}
+					}
+				}
+				buildArray();
+			};
+
+			this.changeAll = function(headerItem){
+				var checked = headerItem.checked;
+				uncheckAllHeaderItems();
+				for(var j = 0; j < that.bodyList.length; j++){
+					if(checked){
+						headerItem.checked = checked;
+						checkByNameAndVersion(that.bodyList[j].name, headerItem.name)
+					}else{
+						uncheckByName(that.bodyList[j].name);
+					}
+				}
+				buildArray();
+			};
+
+			function buildArray(){
+				that.resultArray = [];
+				that.bodyList.forEach(function(bodyItem){
+					bodyItem.versions.filter(function(item){
+						return item.checked;
+					}).forEach(function(item){
+						that.resultArray.push({
+							name: bodyItem.name,
+							version: item
+						});
+					});
+				});
+				checkSelectedHeader();
+				makeResult();
+			}
+
+			function checkSelectedHeader(){
+				if(that.bodyList.length === that.resultArray.length){
+					for(var i = 0; i < that.headerList.length; i++){
+						(function(e){
+							if(that.resultArray.every(function(item){
+									return item.version.key === that.headerList[e].name;
+								})){
+								that.headerList[e].checked = true;
+							}
+						})(i);
+					}
+				}
+			}
+
+			function makeResult(){
+				that.line = 'node plugin install ';
+				that.resultArray
+					.filter(function(key){
+						return key.version.value !== '-';
+					})
+					.forEach(function(item){
+						that.line += item.name + '#' + item.version.value + ' ';
+					});
+				that.line = that.line.trim();
+			}
+
+			function uncheckByName(name){
+				for(var i = 0; i < that.bodyList.length; i++){
+					if(that.bodyList[i].name === name){
+						that.bodyList[i].versions.forEach(function(version){
+							version.checked = false;
+						});
 						break;
 					}
 				}
 			}
 
-			function createResultLine(){
-				that.result = 'node plugin install ';
-				that.checkedArray.forEach(function(item){
-					that.result += item.plugin + '#' + item.version + ' ';
-				});
-				that.result = that.result.trim();
+			function checkByNameAndVersion(name, version){
+				for(var i = 0; i < that.bodyList.length; i++){
+					if(that.bodyList[i].name === name){
+						that.bodyList[i].versions.forEach(function(item){
+							item.checked = item.key === version;
+						});
+						break;
+					}
+				}
 			}
+
+			function uncheckAllHeaderItems(){
+				that.headerList.forEach(function(item){
+					item.checked = false;
+				});
+			}
+
 		}]);
