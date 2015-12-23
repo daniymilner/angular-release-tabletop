@@ -72,7 +72,6 @@ angular
 						dependencies: []
 					};
 					Object.keys(item).forEach(function(key){
-						var version = {};
 						switch(key){
 							case 'Plugins':
 								res.name = item[key];
@@ -81,10 +80,11 @@ angular
 								res.dependencies = item[key].split(', ');
 								break;
 							default:
-								version.key = key;
-								version.value = item[key];
-								version.checked = false;
-								res.versions.push(version);
+								res.versions.push({
+									key: key,
+									value: item[key],
+									checked: false
+								});
 						}
 					});
 					that.bodyList.push(res);
