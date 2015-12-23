@@ -53,7 +53,7 @@ angular
 				Object
 					.keys(initial[0])
 					.filter(function(key){
-						return key !== 'Plugins';
+						return key !== 'Plugins' && key !== 'Dependencies';
 					})
 					.forEach(function(item){
 						that.headerList.push({
@@ -68,17 +68,23 @@ angular
 				initial.forEach(function(item){
 					var res = {
 						name: '',
-						versions: []
+						versions: [],
+						dependencies: []
 					};
 					Object.keys(item).forEach(function(key){
 						var version = {};
-						if(key === 'Plugins'){
-							res.name = item[key];
-						}else{
-							version.key = key;
-							version.value = item[key];
-							version.checked = false;
-							res.versions.push(version);
+						switch(key){
+							case 'Plugins':
+								res.name = item[key];
+								break;
+							case 'Dependencies':
+								res.dependencies = item[key].split(', ');
+								break;
+							default:
+								version.key = key;
+								version.value = item[key];
+								version.checked = false;
+								res.versions.push(version);
 						}
 					});
 					that.bodyList.push(res);
