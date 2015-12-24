@@ -32,7 +32,7 @@
 				<tr ng-repeat="plugin in main.bodyList">
 					<td ng-bind="::plugin.name"></td>
 					<td ng-repeat="version in plugin.versions">
-						<input type="checkbox" ng-if="version.value && version.value !== '-'" ng-model="version.checked" ng-change="main.changeStatus(plugin.name, version)">
+						<input type="checkbox" ng-if="version.value && version.value !== '-'" ng-model="version.checked" ng-change="main.changeStatus(plugin, version)">
 						<span ng-bind="::version.value"></span>
 					</td>
 				</tr>

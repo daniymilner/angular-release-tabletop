@@ -1,6 +1,7 @@
 table tr th,
 table tr td:not(:first-child){
 	text-align: center;
+	min-width: 70px;
 }
 table tr td:first-child input[type=checkbox]{
 	display: none;
