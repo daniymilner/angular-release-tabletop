@@ -91,17 +91,15 @@ angular
 				});
 			}
 
-			this.changeStatus = function(pluginName, version){
+			this.changeStatus = function(plugin, version){
 				var status = version.checked;
 				uncheckAllHeaderItems();
-				if(that.resultArray.length){
-					for(var j = 0; j < that.resultArray.length; j++){
-						if(that.resultArray[j].name === pluginName){
-							uncheckByName(pluginName);
-							version.checked = status;
-							break;
-						}
-					}
+				uncheckByName(plugin.name);
+				version.checked = status;
+				if(status){
+					plugin.dependencies.forEach(function(dependency){
+						checkOnDependency(dependency, version.key);
+					});
 				}
 				buildArray();
 			};
@@ -119,6 +117,24 @@ angular
 				}
 				buildArray();
 			};
+
+			function checkOnDependency(dependency, versionKey){
+				for(var i = 0; i < that.bodyList.length; i++){
+					if(that.bodyList[i].name === dependency){
+						for(var j = 0; j < that.bodyList[i].versions.length; j++){
+							if(that.bodyList[i].versions[j].key === versionKey){
+								uncheckByName(that.bodyList[i].name);
+								that.bodyList[i].versions[j].checked = true;
+								that.bodyList[i].dependencies.forEach(function(dependency){
+									checkOnDependency(dependency, that.bodyList[i].versions[j].key);
+								});
+								break;
+							}
+						}
+						break;
+					}
+				}
+			}
 
 			function buildArray(){
 				that.resultArray = [];
