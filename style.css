@@ -6,6 +6,9 @@ table tr td:not(:first-child){
 table tr td:first-child input[type=checkbox]{
 	display: none;
 }
+.table-hover > tbody > tr:hover{
+	background-color: #DBEEF7;
+}
 .alert{
 	position: absolute;
 	bottom: 0;
