@@ -31,7 +31,10 @@ angular
 		'$timeout',
 		function($scope, Tabletop, Copy, $timeout){
 			var that = this,
-				timeoutPromise;
+				timeoutPromise,
+				colorRange = 6;
+
+			this.colorClass = 'color_' + getRandomInt(1, colorRange);
 
 			this.copy = function(){
 				this.copyStatus = Copy.copy();
@@ -117,6 +120,47 @@ angular
 				}
 				buildArray();
 			};
+
+			this.onMouseOver = function(version){
+				activeByVersion(version.key);
+			};
+
+			this.onHeaderMouseOver = function(item){
+				item.active = true;
+				activeByVersion(item.name);
+			};
+
+			this.onMouseLeave = function(){
+				unActiveAll();
+			};
+
+			function unActiveAll(){
+				that.headerList.forEach(function(item){
+					item.active = false;
+				});
+				that.bodyList.forEach(function(item){
+					item.versions.forEach(function(version){
+						version.active = false;
+					})
+				})
+			}
+
+			function activeByVersion(versionKey){
+				for(var i = 0; i < that.bodyList.length; i++){
+					for(var j = 0; j < that.bodyList[i].versions.length; j++){
+						if(that.bodyList[i].versions[j].key === versionKey){
+							that.bodyList[i].versions[j].active = true;
+							break;
+						}
+					}
+				}
+				for(var k = 0; k < that.headerList.length; k++){
+					if(that.headerList[k].name === versionKey){
+						that.headerList[k].active = true;
+						break;
+					}
+				}
+			}
 
 			function checkOnDependency(dependency, versionKey){
 				for(var i = 0; i < that.bodyList.length; i++){
@@ -204,6 +248,10 @@ angular
 				that.headerList.forEach(function(item){
 					item.checked = false;
 				});
+			}
+
+			function getRandomInt(min, max){
+				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
 
 		}]);

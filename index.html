@@ -6,7 +6,7 @@
 </head>
 <body ng-app="release-tabletop">
 
-	<div ng-controller="mainCtrl as main">
+	<div ng-controller="mainCtrl as main" class="{{main.colorClass}}">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="input-group">
@@ -22,7 +22,7 @@
 					<th>
 						<span>Plugins</span>
 					</th>
-					<th ng-repeat="item in main.headerList">
+					<th ng-repeat="item in main.headerList" ng-mouseover="main.onHeaderMouseOver(item)" ng-mouseleave="main.onMouseLeave()" ng-class="{active: item.active}">
 						<input type="checkbox" ng-model="item.checked" ng-change="main.changeAll(item)">
 						<span ng-bind="::item.name"></span>
 					</th>
@@ -31,7 +31,7 @@
 				<tbody>
 				<tr ng-repeat="plugin in main.bodyList">
 					<td ng-bind="::plugin.name"></td>
-					<td ng-repeat="version in plugin.versions">
+					<td ng-repeat="version in plugin.versions" ng-mouseover="main.onMouseOver(version)" ng-mouseleave="main.onMouseLeave()" ng-class="{active: version.active}">
 						<input type="checkbox" ng-if="version.value && version.value !== '-'" ng-model="version.checked" ng-change="main.changeStatus(plugin, version)">
 						<span ng-bind="::version.value"></span>
 					</td>

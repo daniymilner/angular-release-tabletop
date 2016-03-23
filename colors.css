@@ -1,0 +1,54 @@
+.color_1 .table-hover > tbody > tr:hover,
+.color_1 .table > tbody > tr > td.active,
+.color_1 .table > thead > tr > th.active,
+.color_1 .table-hover > tbody > tr.active:hover > td,
+.color_1 .table-hover > tbody > tr:hover > .active,
+.color_1 .table-hover > tbody > tr > td.active:hover,
+.color_1 .table-hover > tbody > tr > th.active:hover{
+	background-color: #fdfbcb !important;
+}
+.color_2 .table-hover > tbody > tr:hover,
+.color_2 .table > tbody > tr > td.active,
+.color_2 .table > thead > tr > th.active,
+.color_2 .table-hover > tbody > tr.active:hover > td,
+.color_2 .table-hover > tbody > tr:hover > .active,
+.color_2 .table-hover > tbody > tr > td.active:hover,
+.color_2 .table-hover > tbody > tr > th.active:hover{
+	background-color: #d4ffea !important;
+}
+.color_3 .table-hover > tbody > tr:hover,
+.color_3 .table > tbody > tr > td.active,
+.color_3 .table > thead > tr > th.active,
+.color_3 .table-hover > tbody > tr.active:hover > td,
+.color_3 .table-hover > tbody > tr:hover > .active,
+.color_3 .table-hover > tbody > tr > td.active:hover,
+.color_3 .table-hover > tbody > tr > th.active:hover{
+	background-color: rgba(179, 236, 236, 0.5) !important;
+}
+.color_4 .table-hover > tbody > tr:hover,
+.color_4 .table > tbody > tr > td.active,
+.color_4 .table > thead > tr > th.active,
+.color_4 .table-hover > tbody > tr.active:hover > td,
+.color_4 .table-hover > tbody > tr:hover > .active,
+.color_4 .table-hover > tbody > tr > td.active:hover,
+.color_4 .table-hover > tbody > tr > th.active:hover{
+	background-color: rgba(210, 241, 162, 0.6) !important;
+}
+.color_5 .table-hover > tbody > tr:hover,
+.color_5 .table > tbody > tr > td.active,
+.color_5 .table > thead > tr > th.active,
+.color_5 .table-hover > tbody > tr.active:hover > td,
+.color_5 .table-hover > tbody > tr:hover > .active,
+.color_5 .table-hover > tbody > tr > td.active:hover,
+.color_5 .table-hover > tbody > tr > th.active:hover{
+	background-color: rgba(223, 247, 158, 0.6) !important;
+}
+.color_6 .table-hover > tbody > tr:hover,
+.color_6 .table > tbody > tr > td.active,
+.color_6 .table > thead > tr > th.active,
+.color_6 .table-hover > tbody > tr.active:hover > td,
+.color_6 .table-hover > tbody > tr:hover > .active,
+.color_6 .table-hover > tbody > tr > td.active:hover,
+.color_6 .table-hover > tbody > tr > th.active:hover{
+	background-color: #f4ffd6 !important;
+}
