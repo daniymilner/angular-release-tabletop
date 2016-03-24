@@ -5,7 +5,7 @@
 .color_1 .table-hover > tbody > tr:hover > .active,
 .color_1 .table-hover > tbody > tr > td.active:hover,
 .color_1 .table-hover > tbody > tr > th.active:hover{
-	background-color: #fdfbcb !important;
+	background-color: #FFCDD2 !important;
 }
 .color_2 .table-hover > tbody > tr:hover,
 .color_2 .table > tbody > tr > td.active,
@@ -14,7 +14,7 @@
 .color_2 .table-hover > tbody > tr:hover > .active,
 .color_2 .table-hover > tbody > tr > td.active:hover,
 .color_2 .table-hover > tbody > tr > th.active:hover{
-	background-color: #d4ffea !important;
+	background-color: #F8BBD0 !important;
 }
 .color_3 .table-hover > tbody > tr:hover,
 .color_3 .table > tbody > tr > td.active,
@@ -23,7 +23,7 @@
 .color_3 .table-hover > tbody > tr:hover > .active,
 .color_3 .table-hover > tbody > tr > td.active:hover,
 .color_3 .table-hover > tbody > tr > th.active:hover{
-	background-color: rgba(179, 236, 236, 0.5) !important;
+	background-color: #E1BEE7 !important;
 }
 .color_4 .table-hover > tbody > tr:hover,
 .color_4 .table > tbody > tr > td.active,
@@ -32,7 +32,7 @@
 .color_4 .table-hover > tbody > tr:hover > .active,
 .color_4 .table-hover > tbody > tr > td.active:hover,
 .color_4 .table-hover > tbody > tr > th.active:hover{
-	background-color: rgba(210, 241, 162, 0.6) !important;
+	background-color: #D1C4E9 !important;
 }
 .color_5 .table-hover > tbody > tr:hover,
 .color_5 .table > tbody > tr > td.active,
@@ -41,7 +41,7 @@
 .color_5 .table-hover > tbody > tr:hover > .active,
 .color_5 .table-hover > tbody > tr > td.active:hover,
 .color_5 .table-hover > tbody > tr > th.active:hover{
-	background-color: rgba(223, 247, 158, 0.6) !important;
+	background-color: #C5CAE9 !important;
 }
 .color_6 .table-hover > tbody > tr:hover,
 .color_6 .table > tbody > tr > td.active,
@@ -50,5 +50,104 @@
 .color_6 .table-hover > tbody > tr:hover > .active,
 .color_6 .table-hover > tbody > tr > td.active:hover,
 .color_6 .table-hover > tbody > tr > th.active:hover{
-	background-color: #f4ffd6 !important;
+	background-color: #BBDEFB !important;
+}
+.color_7 .table-hover > tbody > tr:hover,
+.color_7 .table > tbody > tr > td.active,
+.color_7 .table > thead > tr > th.active,
+.color_7 .table-hover > tbody > tr.active:hover > td,
+.color_7 .table-hover > tbody > tr:hover > .active,
+.color_7 .table-hover > tbody > tr > td.active:hover,
+.color_7 .table-hover > tbody > tr > th.active:hover{
+	background-color: #B3E5FC !important;
+}
+.color_8 .table-hover > tbody > tr:hover,
+.color_8 .table > tbody > tr > td.active,
+.color_8 .table > thead > tr > th.active,
+.color_8 .table-hover > tbody > tr.active:hover > td,
+.color_8 .table-hover > tbody > tr:hover > .active,
+.color_8 .table-hover > tbody > tr > td.active:hover,
+.color_8 .table-hover > tbody > tr > th.active:hover{
+	background-color: #B2EBF2 !important;
+}
+.color_9 .table-hover > tbody > tr:hover,
+.color_9 .table > tbody > tr > td.active,
+.color_9 .table > thead > tr > th.active,
+.color_9 .table-hover > tbody > tr.active:hover > td,
+.color_9 .table-hover > tbody > tr:hover > .active,
+.color_9 .table-hover > tbody > tr > td.active:hover,
+.color_9 .table-hover > tbody > tr > th.active:hover{
+	background-color: #B2DFDB !important;
+}
+.color_10 .table-hover > tbody > tr:hover,
+.color_10 .table > tbody > tr > td.active,
+.color_10 .table > thead > tr > th.active,
+.color_10 .table-hover > tbody > tr.active:hover > td,
+.color_10 .table-hover > tbody > tr:hover > .active,
+.color_10 .table-hover > tbody > tr > td.active:hover,
+.color_10 .table-hover > tbody > tr > th.active:hover{
+	background-color: #A5D6A7 !important;
+}
+.color_11 .table-hover > tbody > tr:hover,
+.color_11 .table > tbody > tr > td.active,
+.color_11 .table > thead > tr > th.active,
+.color_11 .table-hover > tbody > tr.active:hover > td,
+.color_11 .table-hover > tbody > tr:hover > .active,
+.color_11 .table-hover > tbody > tr > td.active:hover,
+.color_11 .table-hover > tbody > tr > th.active:hover{
+	background-color: #C5E1A5 !important;
+}
+.color_12 .table-hover > tbody > tr:hover,
+.color_12 .table > tbody > tr > td.active,
+.color_12 .table > thead > tr > th.active,
+.color_12 .table-hover > tbody > tr.active:hover > td,
+.color_12 .table-hover > tbody > tr:hover > .active,
+.color_12 .table-hover > tbody > tr > td.active:hover,
+.color_12 .table-hover > tbody > tr > th.active:hover{
+	background-color: #E6EE9C !important;
+}
+.color_13 .table-hover > tbody > tr:hover,
+.color_13 .table > tbody > tr > td.active,
+.color_13 .table > thead > tr > th.active,
+.color_13 .table-hover > tbody > tr.active:hover > td,
+.color_13 .table-hover > tbody > tr:hover > .active,
+.color_13 .table-hover > tbody > tr > td.active:hover,
+.color_13 .table-hover > tbody > tr > th.active:hover{
+	background-color: rgba(255,241,118,0.9) !important;
+}
+.color_14 .table-hover > tbody > tr:hover,
+.color_14 .table > tbody > tr > td.active,
+.color_14 .table > thead > tr > th.active,
+.color_14 .table-hover > tbody > tr.active:hover > td,
+.color_14 .table-hover > tbody > tr:hover > .active,
+.color_14 .table-hover > tbody > tr > td.active:hover,
+.color_14 .table-hover > tbody > tr > th.active:hover{
+	background-color: #FFE082 !important;
+}
+.color_15 .table-hover > tbody > tr:hover,
+.color_15 .table > tbody > tr > td.active,
+.color_15 .table > thead > tr > th.active,
+.color_15 .table-hover > tbody > tr.active:hover > td,
+.color_15 .table-hover > tbody > tr:hover > .active,
+.color_15 .table-hover > tbody > tr > td.active:hover,
+.color_15 .table-hover > tbody > tr > th.active:hover{
+	background-color: #FFCC80 !important;
+}
+.color_16 .table-hover > tbody > tr:hover,
+.color_16 .table > tbody > tr > td.active,
+.color_16 .table > thead > tr > th.active,
+.color_16 .table-hover > tbody > tr.active:hover > td,
+.color_16 .table-hover > tbody > tr:hover > .active,
+.color_16 .table-hover > tbody > tr > td.active:hover,
+.color_16 .table-hover > tbody > tr > th.active:hover{
+	background-color: #FFCCBC !important;
+}
+.color_17 .table-hover > tbody > tr:hover,
+.color_17 .table > tbody > tr > td.active,
+.color_17 .table > thead > tr > th.active,
+.color_17 .table-hover > tbody > tr.active:hover > td,
+.color_17 .table-hover > tbody > tr:hover > .active,
+.color_17 .table-hover > tbody > tr > td.active:hover,
+.color_17 .table-hover > tbody > tr > th.active:hover{
+	background-color: #CFD8DC !important;
 }

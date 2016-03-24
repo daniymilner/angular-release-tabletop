@@ -32,7 +32,7 @@ angular
 		function($scope, Tabletop, Copy, $timeout){
 			var that = this,
 				timeoutPromise,
-				colorRange = 6;
+				colorRange = 17;
 
 			this.colorClass = 'color_' + getRandomInt(1, colorRange);
 
