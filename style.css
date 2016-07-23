@@ -1,11 +1,18 @@
 @import "colors.css";
+.panel > .table-bordered,
+.panel > .table-responsive > .table-bordered{
+	border: 1px solid #ddd;
+}
 table tr th,
 table tr td:not(:first-child){
 	text-align: center;
-	min-width: 70px;
+	min-width: 97px;
 }
 table tr td:first-child input[type=checkbox]{
 	display: none;
+}
+.panel{
+	border: none;
 }
 .alert{
 	position: absolute;
