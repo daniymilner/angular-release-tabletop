@@ -32,7 +32,8 @@ angular
 		function($scope, Tabletop, Copy, $timeout){
 			var that = this,
 				timeoutPromise,
-				colorRange = 17;
+				colorRange = 17,
+				isHiddenOldPlugins = true;
 
 			this.colorClass = 'color_' + getRandomInt(1, colorRange);
 
@@ -59,9 +60,13 @@ angular
 						return key !== 'Plugins' && key !== 'Dependencies';
 					})
 					.forEach(function(item){
+						var oldVersion = isOldVersion(item);
+
 						that.headerList.push({
 							name: item,
-							checked: false
+							checked: false,
+							oldVersion: oldVersion,
+							hidden: oldVersion
 						});
 					});
 			}
@@ -75,6 +80,8 @@ angular
 						dependencies: []
 					};
 					Object.keys(item).forEach(function(key){
+						var oldVersion;
+
 						switch(key){
 							case 'Plugins':
 								res.name = item[key];
@@ -83,16 +90,65 @@ angular
 								res.dependencies = item[key].split(', ');
 								break;
 							default:
+								oldVersion = isOldVersion(key);
+
 								res.versions.push({
 									key: key,
 									value: item[key],
-									checked: false
+									checked: false,
+									oldVersion: oldVersion,
+									hidden: oldVersion
 								});
 						}
 					});
 					that.bodyList.push(res);
 				});
 			}
+
+			function isOldVersion(name){
+				var splited = name.split('.'),
+					minor;
+				if(splited.length > 2){
+					minor = parseInt(splited[1]);
+					return !minor || isNaN(minor) || minor < 41;
+				}
+				return false;
+			}
+
+			function filterOldVersion(item){
+				return item.oldVersion;
+			}
+
+			function setHiddenFalse(item){
+				item.hidden = false;
+			}
+
+			function setHiddenTrue(item){
+				item.hidden = true;
+			}
+
+			this.activateOldPlugins = function(){
+				if(isHiddenOldPlugins){
+					that.headerList
+						.filter(filterOldVersion)
+						.forEach(setHiddenFalse);
+					that.bodyList.forEach(function(plugin){
+						plugin.versions
+							.filter(filterOldVersion)
+							.forEach(setHiddenFalse);
+					});
+				}else{
+					that.headerList
+						.filter(filterOldVersion)
+						.forEach(setHiddenTrue);
+					that.bodyList.forEach(function(plugin){
+						plugin.versions
+							.filter(filterOldVersion)
+							.forEach(setHiddenTrue);
+					});
+				}
+				isHiddenOldPlugins = !isHiddenOldPlugins;
+			};
 
 			this.changeStatus = function(plugin, version){
 				var status = version.checked;
