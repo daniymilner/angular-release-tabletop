@@ -21,6 +21,15 @@ angular
 					return 'fail';
 				}
 			};
+			this.copyClone = function(){
+				document.querySelector('.form-control.copy-clone').select();
+
+				try{
+					return document.execCommand('copy') ? 'success' : 'fail';
+				}catch(e){
+					return 'fail';
+				}
+			};
 			return this;
 		}
 	])
@@ -39,6 +48,14 @@ angular
 
 			this.copy = function(){
 				this.copyStatus = Copy.copy();
+				$timeout.cancel(timeoutPromise);
+				timeoutPromise = $timeout(function(){
+					that.copyStatus = false;
+				}, 3000);
+			};
+
+			this.copyClone = function(){
+				this.copyStatus = Copy.copyClone();
 				$timeout.cancel(timeoutPromise);
 				timeoutPromise = $timeout(function(){
 					that.copyStatus = false;
@@ -276,6 +293,15 @@ angular
 						that.line += item.name + '#' + item.version.value + ' ';
 					});
 				that.line = that.line.trim();
+
+				that.cloneLine = that.resultArray
+					.filter(function(key){
+						return key.version.value !== '-';
+					})
+					.map(function(item){
+						return 'git clone --branch ' + item.version.value + ' git@git.qapint.com:ewizard/' + item.name + '-plugin.git'
+					})
+					.join(' && ');
 			}
 
 			function uncheckByName(name){
