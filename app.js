@@ -124,10 +124,14 @@ angular
 
 			function isOldVersion(name){
 				var splited = name.split('.'),
-					minor;
-				if(splited.length > 2){
+					minor, major;
+				if(splited.length === 3){
+					major = parseInt(splited[0]);
+					if(major === 1){
+						return false;
+					}
 					minor = parseInt(splited[1]);
-					return !minor || isNaN(minor) || minor < 41;
+					return !minor || isNaN(minor) || minor < 44;
 				}
 				return false;
 			}
