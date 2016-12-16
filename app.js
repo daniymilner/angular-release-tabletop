@@ -6,7 +6,7 @@ angular
 	])
 	.config(['TabletopProvider', function(TabletopProvider){
 		TabletopProvider.setTabletopOptions({
-			key: 'https://docs.google.com/spreadsheets/d/1-Sgsypz98IxfgxuJpKbt-NaiM5K_c4MufvC3GRwvgg4/pubhtml?gid=1594711496&single=true',
+			key: 'https://docs.google.com/spreadsheets/d/1jiMpRnQfjpPkYNy21AwufQZTXM9p8xazmWgQxFVjhAw/pubhtml?gid=76162401&single=true',
 			simpleSheet: true
 		});
 	}])
